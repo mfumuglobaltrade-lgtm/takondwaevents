@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Takondwa Events | Premium Decor, Equipment Rental & Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #c5a059;
+            --primary-light: #e6c88b;
+            --primary-dark: #997836;
+            --secondary: #1a1a1a;
+            --light-bg: #fdfbf7;
+            --white: #ffffff;
+            --gray-light: #f4f4f4;
+            --gray-text: #666666;
+            --whatsapp-color: #25D366;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 100%; /* Respect user font settings */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .section-padding {
+            padding: clamp(3rem, 6vh, 6rem) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Responsive Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 2rem;
+            min-height: 48px; /* Touch friendly size */
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: var(--white);
+            gap: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb954;
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Fluid Titles */
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 15px;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-subtitle {
+            color: var(--gray-text);
+            margin-bottom: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: clamp(38px, 5vw, 52px);
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-size: clamp(1.1rem, 2vw, 1.6rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: clamp(15px, 2.5vw, 35px);
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(0.85rem, 1vw, 1rem);
+            transition: var(--transition);
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 8px;
+            min-height: 48px;
+            min-width: 48px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-logo {
+            width: clamp(90px, 15vw, 130px);
+            height: clamp(90px, 15vw, 130px);
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            margin-bottom: 30px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray-text);
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: clamp(25px, 4vw, 40px) 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            text-align: center;
+            border-bottom: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+        }
+
+        /* Rentals Section */
+        .rentals {
+            background-color: var(--white);
+        }
+
+        .rental-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .rental-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            background: var(--white);
+        }
+
+        .rental-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .rental-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .rental-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 10px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-info-item i {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .contact-info-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-info-item a:hover {
+            color: var(--primary);
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 18px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 40px 0 25px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .footer-logo {
+            height: 55px;
+            width: auto;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #222;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Responsive Breakpoints */
+        
+        /* Tablets (768px and wider) */
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Laptop & Desktop Navigation (992px and wider) */
+        @media (max-width: 991px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 10px 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+            }
+        }
+
+        /* Large Screen / Ultra-wide Optimization (1400px+) */
+        @media (min-width: 1400px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .rental-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo-container">
+                <img src="https://i.imgur.com/7u6YWqM.png" alt="Takondwa Events Logo" class="logo-img">
+                <span class="logo-text">TAKONDWA<span>EVENTS</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#rentals">Hires & Rentals</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <img src="https://i.imgur.com/7u6YWqM.png" alt="Takondwa Events Logo" class="hero-logo">
+            <h1>Creating Unforgettable Moments</h1>
+            <p>Your premier event partner for bespoke decor, luxury hall & equipment hires, corporate functions, and high-end media coverage.</p>
+            <div class="hero-btns">
+                <a href="#services" class="btn btn-primary">Our Services</a>
+                <a href="https://wa.me/260772799811?text=Hello%20Takondwa%20Events,%20I%20would%20like%20to%20book%20an%20event." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="Takondwa Events Setup">
+                </div>
+                <div class="about-text">
+                    <h3>Welcome to Takondwa Events</h3>
+                    <p>At Takondwa Events, we specialize in bringing your vision to life. Whether you are planning a romantic wedding, a vibrant kitchen party, a milestone birthday celebration, or a corporate function, we deliver excellence tailored to your style.</p>
+                    <p>From full-service event decoration and venue hire to premium linen rentals, high-end cutlery, and full photography/videography coverage, we handle every detail so you can enjoy your special day stress-free.</p>
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive event solutions designed to perfection</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Wedding Decor</h3>
+                    <p>Bespoke stage designs, aisle setups, floral arrangements, and thematic lighting tailored for your special day.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Kitchen Party Decor</h3>
+                    <p>Vibrant, elegant, and traditional/modern fusion decor crafted specifically for memorable kitchen parties.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+                    <h3>Birthday Party Decor</h3>
+                    <p>Customized theme setups, balloon arches, backdrop walls, and styling for all ages.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Corporate Functions</h3>
+                    <p>Professional staging, branding setups, audio-visual environments, and decor for galas and conferences.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-camera"></i></div>
+                    <h3>Photography</h3>
+                    <p>High-resolution event photography capturing authentic moments, portraits, and full event highlights.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-video"></i></div>
+                    <h3>Videography</h3>
+                    <p>Cinematic video recording, drone coverage, and professionally edited event highlight films.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hires & Rentals Section -->
+    <section id="rentals" class="rentals section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">Hires & Rentals</h2>
+            <p class="section-subtitle">Top-quality event gear, venues, and table settings for hire</p>
+
+            <div class="rental-grid">
+                <div class="rental-item">
+                    <img src="https://images.unsplash.com/photo-1545232979-fbfd42e000b9?auto=format&fit=crop&w=600&q=80" alt="Event Halls">
+                    <div class="rental-info">
+                        <h4>Event Halls</h4>
+                        <p>Spacious, fully air-conditioned venues for all capacities.</p>
+                    </div>
+                </div>
+                <div class="rental-item">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80" alt="Chairs & Tables">
+                    <div class="rental-info">
+                        <h4>Chairs & Tables</h4>
+                        <p>Chiavari chairs, plastic chairs, round and banquet tables.</p>
+                    </div>
+                </div>
+                <div class="rental-item">
+                    <img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=600&q=80" alt="Cutlery & Crockery">
+                    <div class="rental-info">
+                        <h4>Cutlery & Tableware</h4>
+                        <p>Premium silver & gold cutlery, glass plates, and drinkware.</p>
+                    </div>
+                </div>
+                <div class="rental-item">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80" alt="Table & Chair Linen">
+                    <div class="rental-info">
+                        <h4>Table & Chair Linen</h4>
+                        <p>Elegant tablecloths, runners, napkins, and chair covers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">Our Work Gallery</h2>
+            <p class="section-subtitle">A glimpse into some of our recent events and setups</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80" alt="Wedding Setup">
+                    <div class="gallery-overlay">Wedding Reception</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80" alt="Birthday Party">
+                    <div class="gallery-overlay">Birthday Gala</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=600&q=80" alt="Kitchen Party">
+                    <div class="gallery-overlay">Kitchen Party Setup</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Corporate Event">
+                    <div class="gallery-overlay">Corporate Function</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle" style="color: #bbb;">Get in touch with us to plan or book your next event</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Plan Your Event</h3>
+                    <p style="margin-bottom: 30px; color: #ccc;">Reach out to us directly or fill out the form to instantly message us on WhatsApp and Email.</p>
+                    
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Lusaka, Zambia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp / Phone</h4>
+                            <p><a href="https://wa.me/260772799811?text=Hello%20Takondwa%20Events," target="_blank">+260 772 799 811</a></p>
+                            <p><a href="https://wa.me/260977628200?text=Hello%20Takondwa%20Events," target="_blank">+260 977 628 200</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Address</h4>
+                            <p><a href="mailto:takondwaevents@gmail.com">takondwaevents@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="eventForm">
+                        <input type="text" id="clientName" placeholder="Your Full Name" required>
+                        <input type="email" id="clientEmail" placeholder="Your Email Address" required>
+                        <input type="tel" id="clientPhone" placeholder="Your Phone Number" required>
+                        <select id="eventType" required>
+                            <option value="" disabled selected>Select Event Type</option>
+                            <option value="Wedding Decor">Wedding Decor</option>
+                            <option value="Kitchen Party Decor">Kitchen Party Decor</option>
+                            <option value="Birthday Party Decor">Birthday Party Decor</option>
+                            <option value="Corporate Function">Corporate Function</option>
+                            <option value="Equipment / Hall Hire">Equipment / Hall Hire</option>
+                            <option value="Photography & Videography">Photography & Videography</option>
+                        </select>
+                        <textarea id="eventDetails" rows="5" placeholder="Tell us more about your event (Date, Location, Guests, etc.)" required></textarea>
+                        
+                        <button type="submit" class="btn btn-whatsapp" style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp & Email
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <img src="https://i.imgur.com/7u6YWqM.png" alt="Takondwa Events Logo" class="footer-logo">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/260772799811" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2026 Takondwa Events. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Form Handler & Mobile Nav Script -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Form Submission - Sends to WhatsApp & Email
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const phone = document.getElementById('clientPhone').value;
+            const type = document.getElementById('eventType').value;
+            const details = document.getElementById('eventDetails').value;
+
+            // WhatsApp Message Formatting
+            const message = `*NEW EVENT INQUIRY - TAKONDWA EVENTS*%0A%0A` +
+                            `*Name:* ${encodeURIComponent(name)}%0A` +
+                            `*Email:* ${encodeURIComponent(email)}%0A` +
+                            `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                            `*Event Type:* ${encodeURIComponent(type)}%0A` +
+                            `*Details:* ${encodeURIComponent(details)}`;
+
+            const whatsappNumber = "260772799811";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+            // Mailto Email Formatting
+            const mailSubject = encodeURIComponent(`New Inquiry: ${type} - ${name}`);
+            const mailBody = encodeURIComponent(
+                `New Event Inquiry:\n\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${phone}\n` +
+                `Event Type: ${type}\n\n` +
+                `Details:\n${details}`
+            );
+            const mailtoURL = `mailto:takondwaevents@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+
+            // Trigger Email draft opening
+            window.location.href = mailtoURL;
+
+            // Open WhatsApp directly in new tab
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+            }, 300);
+        });
+    </script>
+</body>
+</html>
